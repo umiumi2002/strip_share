@@ -60,8 +60,6 @@ flightStrip.arrivals.append(Airplane(4,"plane4","16L",1230))
 flightStrip.arrivals.append(Airplane(5,"plane5","16L",1330))
 
 
-
-
 @app.route("/",methods=["GET"])
 def hello():
     return jsonify({"departures": [{"id":airplane.id,"name":airplane.name,"runway":airplane.runway,"time":airplane.time,"is_completed":airplane.is_completed} for airplane in flightStrip.departures],"arrivals": [{"id":airplane.id,"name":airplane.name,"runway":airplane.runway,"time":airplane.time,"is_completed":airplane.is_completed} for airplane in flightStrip.arrivals]})
