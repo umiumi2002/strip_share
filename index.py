@@ -1,7 +1,6 @@
 from flask import Flask, jsonify,request
 from flask_cors import CORS
 
-
 app = Flask(__name__)
 CORS(app)
 
@@ -15,14 +14,15 @@ class Airplane:
         self.is_completed = False
 
     def to_dict(self):
+        # シーンに応じて time をゼロ埋めするかどうかを切り替える
+        time_str = f"{self.time:04d}" if use_leading_zero else str(self.time)
         return {
             "id": self.id,
             "name": self.name,
             "runway": self.runway,
-            "time": self.time,
+            "time": time_str,
             "is_completed": self.is_completed
         }
-
 
 class FlightStrip:
     def __init__(self):
@@ -68,15 +68,15 @@ flightStrip = FlightStrip()
 
 
 # シーン3のデータを追加
-flightStrip.departures.append(Airplane(1,"dep1","34R",0623))
-flightStrip.departures.append(Airplane(2,"dep2","34R",0631))
-flightStrip.departures.append(Airplane(3,"dep3","34R",0635))
-flightStrip.departures.append(Airplane(4,"dep4","34R",0650))
-flightStrip.arrivals.append(Airplane(1,"arr1","34R",0605))
-flightStrip.arrivals.append(Airplane(2,"arr2","34R",0609))
-flightStrip.arrivals.append(Airplane(3,"arr3","34R",0611))
-flightStrip.arrivals.append(Airplane(4,"arr4","34R",0618))
-flightStrip.arrivals.append(Airplane(5,"arr5","34R",0621))
+flightStrip.departures.append(Airplane(1,"dep1","34R","0"+623))
+flightStrip.departures.append(Airplane(2,"dep2","34R","0"+631))
+flightStrip.departures.append(Airplane(3,"dep3","34R","0"+635))
+flightStrip.departures.append(Airplane(4,"dep4","34R","0"+650))
+flightStrip.arrivals.append(Airplane(1,"arr1","34R","0"+605))
+flightStrip.arrivals.append(Airplane(2,"arr2","34R","0"+609))
+flightStrip.arrivals.append(Airplane(3,"arr3","34R","0"+611))
+flightStrip.arrivals.append(Airplane(4,"arr4","34R","0"+618))
+flightStrip.arrivals.append(Airplane(5,"arr5","34R","0"+621))
 
 
 @app.route("/",methods=["GET"])
@@ -95,7 +95,7 @@ def update_emergency():
         last_arrival_time = flightStrip.arrivals[-1].time
 
         # 新しい到着機データを作成
-        new_flight = Airplane(arrival_count + 1, f'plane{arrival_count + 1}', '16L', last_arrival_time + 100)
+        new_flight = Airplane(arrival_count + 1, f'arr{arrival_count + 1}', '16L', last_arrival_time + 5)
 
         # 新しい到着機を arrivals に追加
         flightStrip.add_arrival(new_flight)
