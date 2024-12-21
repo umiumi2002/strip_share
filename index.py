@@ -68,15 +68,15 @@ flightStrip = FlightStrip()
 
 
 # シーン3のデータを追加
-flightStrip.departures.append(Airplane(1,"dep1","34R","0"+623))
-flightStrip.departures.append(Airplane(2,"dep2","34R","0"+631))
-flightStrip.departures.append(Airplane(3,"dep3","34R","0"+635))
-flightStrip.departures.append(Airplane(4,"dep4","34R","0"+650))
-flightStrip.arrivals.append(Airplane(1,"arr1","34R","0"+605))
-flightStrip.arrivals.append(Airplane(2,"arr2","34R","0"+609))
-flightStrip.arrivals.append(Airplane(3,"arr3","34R","0"+611))
-flightStrip.arrivals.append(Airplane(4,"arr4","34R","0"+618))
-flightStrip.arrivals.append(Airplane(5,"arr5","34R","0"+621))
+flightStrip.departures.append(Airplane(1,"dep1","34R","0"+str(623)))
+flightStrip.departures.append(Airplane(2,"dep2","34R","0"+str(631)))
+flightStrip.departures.append(Airplane(3,"dep3","34R","0"+str(635)))
+flightStrip.departures.append(Airplane(4,"dep4","34R","0"+str(650)))
+flightStrip.arrivals.append(Airplane(1,"arr1","34R","0"+str(605)))
+flightStrip.arrivals.append(Airplane(2,"arr2","34R","0"+str(609)))
+flightStrip.arrivals.append(Airplane(3,"arr3","34R","0"+str(611)))
+flightStrip.arrivals.append(Airplane(4,"arr4","34R","0"+str(618)))
+flightStrip.arrivals.append(Airplane(5,"arr5","34R","0"+str(621)))
 
 
 @app.route("/",methods=["GET"])
