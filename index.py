@@ -64,6 +64,7 @@ flightStrip.arrivals.append(Airplane(2,"arr2","B772","16L",1804))
 flightStrip.arrivals.append(Airplane(3,"arr3","A333","16L",1806))
 flightStrip.arrivals.append(Airplane(4,"arr4","B788","16L",1807))
 
+
 # シーン2のデータを追加
 # flightStrip.departures.append(Airplane(1,"dep1","34R",1402))
 # flightStrip.departures.append(Airplane(2,"dep2","34R",1408))
