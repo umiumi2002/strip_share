@@ -6,10 +6,9 @@ CORS(app)
 
 # クラスの定義
 class Airplane:
-    def __init__(self,id,name,type,runway,time):
+    def __init__(self,id,name,runway,time):
         self.id = id
         self.name = name
-        self.type = type
         self.runway = runway
         self.time = time
         self.is_completed = False
@@ -18,7 +17,6 @@ class Airplane:
         return {
             "id": self.id,
             "name": self.name,
-            "type": self.type,
             "runway": self.runway,
             "time": time_str,
             "is_completed": self.is_completed
@@ -45,24 +43,24 @@ class FlightStrip:
 flightStrip = FlightStrip()
 
 # シーン1のデータを追加
-flightStrip.departures.append(Airplane(1,"dep1","B738","16L",1813))
-flightStrip.departures.append(Airplane(2,"dep2","B738","16L",1814))
-flightStrip.departures.append(Airplane(3,"dep3","B763","16L",1816))
-flightStrip.departures.append(Airplane(4,"dep4","B763","16L",1818))
-flightStrip.departures.append(Airplane(5,"dep5","B763","16L",1819))
-flightStrip.departures.append(Airplane(6,"dep6","B772","16L",1822))
-flightStrip.departures.append(Airplane(7,"dep7","A21N","16L",1824))
-flightStrip.departures.append(Airplane(8,"dep8","B788","16L",1826))
-flightStrip.departures.append(Airplane(9,"dep9","B763","16L",1828))
-flightStrip.departures.append(Airplane(10,"dep10","B789","16L",1833))
-flightStrip.departures.append(Airplane(11,"dep11","B738","16L",1838))
-flightStrip.departures.append(Airplane(12,"dep12","B763","16L",1850))
-flightStrip.departures.append(Airplane(13,"dep13","B738","16L",1854))
-flightStrip.departures.append(Airplane(14,"dep14","B738","16L",1855))
-flightStrip.arrivals.append(Airplane(1,"arr1","B77W","16L",1802))
-flightStrip.arrivals.append(Airplane(2,"arr2","B772","16L",1804))
-flightStrip.arrivals.append(Airplane(3,"arr3","A333","16L",1806))
-flightStrip.arrivals.append(Airplane(4,"arr4","B788","16L",1807))
+flightStrip.departures.append(Airplane(1,"dep1","16L",1813))
+flightStrip.departures.append(Airplane(2,"dep2","16L",1814))
+flightStrip.departures.append(Airplane(3,"dep3","16L",1816))
+flightStrip.departures.append(Airplane(4,"dep4","16L",1818))
+flightStrip.departures.append(Airplane(5,"dep5","16L",1819))
+flightStrip.departures.append(Airplane(6,"dep6","16L",1822))
+flightStrip.departures.append(Airplane(7,"dep7","16L",1824))
+flightStrip.departures.append(Airplane(8,"dep8","16L",1826))
+flightStrip.departures.append(Airplane(9,"dep9","16L",1828))
+flightStrip.departures.append(Airplane(10,"dep10","16L",1833))
+flightStrip.departures.append(Airplane(11,"dep11","16L",1838))
+flightStrip.departures.append(Airplane(12,"dep12","16L",1850))
+flightStrip.departures.append(Airplane(13,"dep13","16L",1854))
+flightStrip.departures.append(Airplane(14,"dep14","16L",1855))
+flightStrip.arrivals.append(Airplane(1,"arr1","16L",1802))
+flightStrip.arrivals.append(Airplane(2,"arr2","16L",1803))
+flightStrip.arrivals.append(Airplane(3,"arr3","16L",1805))
+flightStrip.arrivals.append(Airplane(4,"arr4","16L",1807))
 
 # シーン2のデータを追加
 # flightStrip.departures.append(Airplane(1,"dep1","34R",1402))
