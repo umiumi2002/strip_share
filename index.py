@@ -6,10 +6,10 @@ CORS(app)
 
 # クラスの定義
 class Airplane:
-    def __init__(self,id,name,type,runway,time):
+    def __init__(self,id,name,model,runway,time):
         self.id = id
         self.name = name
-        self.type = type
+        self.model = model  # モデル名
         self.runway = runway
         self.time = time
         self.is_completed = False
@@ -18,9 +18,9 @@ class Airplane:
         return {
             "id": self.id,
             "name": self.name,
-            "type": self.type,
+            "model": self.model,
             "runway": self.runway,
-            "time": time_str,
+            "time": self.time,
             "is_completed": self.is_completed
         }
 
@@ -97,7 +97,7 @@ flightStrip.arrivals.append(Airplane(4,"arr4","B788","16L",1807))
 
 @app.route("/",methods=["GET"])
 def hello():
-    return jsonify({"departures": [{"id":airplane.id,"name":airplane.name,"runway":airplane.runway,"time":airplane.time,"is_completed":airplane.is_completed} for airplane in flightStrip.departures],"arrivals": [{"id":airplane.id,"name":airplane.name,"runway":airplane.runway,"time":airplane.time,"is_completed":airplane.is_completed} for airplane in flightStrip.arrivals]})
+    return jsonify({"departures": [{"id":airplane.id,"name":airplane.name,"model":airplane.model,"runway":airplane.runway,"time":airplane.time,"is_completed":airplane.is_completed} for airplane in flightStrip.departures],"arrivals": [{"id":airplane.id,"name":airplane.name,"model":airplane.model,"runway":airplane.runway,"time":airplane.time,"is_completed":airplane.is_completed} for airplane in flightStrip.arrivals]})
 
 
 # 緊急ボタンが押されたときの処理
