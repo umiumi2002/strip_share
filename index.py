@@ -145,6 +145,25 @@ def remove_emergency():
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
+@app.route('/remove_strip', methods=['POST'])
+def remove_strip():
+    try:
+        data = request.get_json()
+        airplane_id = data.get('id')
+        airplane_type = data.get('type')  # "arrival" or "departure"
+
+        if airplane_id is None or airplane_type not in ["arrival", "departure"]:
+            return jsonify({'error': 'Invalid request'}), 400
+
+        target_list = flightStrip.arrivals if airplane_type == "arrival" else flightStrip.departures
+        target_list[:] = [a for a in target_list if a.id != airplane_id]  # リストから除外
+
+        strips_data[airplane_type + 's'] = [s for s in strips_data[airplane_type + 's'] if s["id"] != airplane_id]  # strips_dataも更新
+
+        return jsonify({'message': f'Strip ID {airplane_id} removed from {airplane_type} list.'}), 200
+
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
 
 
 # 仮のストリップデータ
@@ -152,9 +171,6 @@ strips_data = {
     'departures': [],
     'arrivals': []
 }
-
-
-
 
 
 
